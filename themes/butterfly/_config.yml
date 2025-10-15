@@ -22,6 +22,7 @@ menu:
   归档: /archives/ || fas fa-archive
   标签: /tags/ || fas fa-tags
   分类: /categories/ || fas fa-folder-open
+  搜索: search || fas fa-search
 
 # --------------------------------------
 # Code Blocks Settings
@@ -497,6 +498,7 @@ search:
 
   # Local Search
   local_search:
+    enable: true
     # Preload the search data when the page loads.
     preload: false
     # Show top n results per article, show all results by setting to -1
