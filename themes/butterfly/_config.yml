@@ -152,10 +152,6 @@ subtitle:
   # Typewriter Effect
   effect: true
   loop: true
-  subtitle:
-  enable: true
-  effect: true
-  loop: true
   typedjs:
     # 🕒 时间配置（毫秒）
     startDelay: 300        # 恰到好处的开场延迟
