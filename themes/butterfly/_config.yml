@@ -122,7 +122,7 @@ post_meta:
     # Choose: date / relative
     date_format: date
     categories: true
-    tags: false
+    tags: true
     label: true
   post:
     # Choose: left / center
@@ -442,7 +442,7 @@ copy:
 
 # Need to install the hexo-wordcount plugin
 wordcount:
-  enable: false
+  enable: true
   # Display the word count of the article in post meta
   post_wordcount: true
   # Display the time to read the article in post meta
