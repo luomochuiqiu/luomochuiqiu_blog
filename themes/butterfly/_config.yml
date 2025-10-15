@@ -45,8 +45,8 @@ code_blocks:
 # Social media links
 # Formal:
 #   icon: link || the description || color
-social:
-  fab fa-github: https://github.com/luomochuiqiu || Github || '#24292e'
+#social:
+  #fab fa-github: https://github.com/xxxxxx || Github || '#24292e'
   # fas fa-envelope: mailto:xxxxxx@gmail.com || Email || '#4a7dbe'
 
 # --------------------------------------
@@ -66,7 +66,7 @@ disable_top_img: false
 default_top_img:
 
 # The banner image of index page
-index_img:
+index_img: /img/guillermo-ferla-Oze6U2m1oYU-unsplash.jpg
 
 # The banner image of archive page
 archive_img:
@@ -148,9 +148,28 @@ index_top_img_height:
 
 # The subtitle on homepage
 subtitle:
-  enable: false
+  enable: true
   # Typewriter Effect
   effect: true
+  loop: true
+  subtitle:
+  enable: true
+  effect: true
+  loop: true
+  typedjs:
+    # 🕒 时间配置（毫秒）
+    startDelay: 300        # 恰到好处的开场延迟
+    typeSpeed: 90          # 流畅的打字速度
+    backSpeed: 60          # 稍快的回退速度，保持节奏感
+    backDelay: 1800        # 回退前给读者阅读时间
+    
+    # ✨ 视觉效果
+    showCursor: true       # 显示光标增强打字效果
+    cursorChar: "▌"        # 现代感光标（比 | 更好看）
+    
+    # 🔁 动画行为
+    loop: true             # 循环播放保持活力
+    smartBackspace: true   # 智能回退，提升流畅度
   # Customize typed.js
   # https://github.com/mattboldt/typed.js/#customization
   typed_option:
@@ -163,8 +182,8 @@ subtitle:
   # 3 - jinrishici.com
   source: false
   # If you close the typewriter effect, the subtitle will only show the first line of sub
-  sub:
-
+  sub: 
+    - 我们关心的，不是你是否失败了，而是你对失败能否无怨。
 # Article layout on the homepage
 # 1: Cover on the left, info on the right
 # 2: Cover on the right, info on the left
@@ -288,10 +307,10 @@ aside:
       enable: true
       icon: fab fa-github
       text: Follow Me
-      link: https://github.com/xxxxxx
+      link: https://github.com/luomochuiqiu
   card_announcement:
     enable: true
-    content: This is my Blog
+    content: 欢迎来到我的博客
   card_recent_post:
     enable: true
     # If set 0 will show all
@@ -791,7 +810,7 @@ mask:
 
 # Loading Animation
 preloader:
-  enable: false
+  enable: true
   # source
   # 1. fullpage-loading
   # 2. pace (progress bar)
