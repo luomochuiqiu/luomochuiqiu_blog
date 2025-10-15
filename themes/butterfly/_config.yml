@@ -1113,6 +1113,40 @@ inject:
           min-height: 400px;
         }
         
+        /* 页脚渐变样式 */
+        #footer {
+          background: linear-gradient(45deg, 
+            #ff9a9e, #fad0c4, #fad0c4, 
+            #a18cd1, #fbc2eb, #a6c1ee,
+            #84fab0, #8fd3f4) !important;
+          background-size: 400% 400% !important;
+          animation: gradientBG 15s ease infinite !important;
+          background-attachment: fixed !important;
+          border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
+          color: white !important;
+          padding: 30px 0 !important;
+          margin-top: 40px !important;
+          position: relative;
+        }
+        
+        /* 页脚文字颜色调整 */
+        #footer, 
+        #footer a, 
+        #footer .footer-item {
+          color: rgba(255, 255, 255, 0.9) !important;
+          text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+        }
+        
+        #footer a:hover {
+          color: white !important;
+          text-decoration: underline !important;
+        }
+        
+        /* 确保页脚内容与背景对比度足够 */
+        #footer .footer-separator {
+          color: rgba(255, 255, 255, 0.7) !important;
+        }
+        
         /* 动画定义 */
         @keyframes gradientBG {
           0% { background-position: 0% 50%; }
@@ -1121,6 +1155,73 @@ inject:
         }
       </style>
   bottom:
+    # 1. 性能优化 - 图片懒加载增强
+    - |
+      <script>
+        // 增强图片懒加载，提升页面加载性能
+        if ('loading' in HTMLImageElement.prototype) {
+          const images = document.querySelectorAll('img:not([loading])');
+          images.forEach(img => {
+            if (!img.getAttribute('loading')) {
+              img.setAttribute('loading', 'lazy');
+            }
+          });
+        }
+      </script>
+
+    # 2. 用户体验 - 平滑滚动增强
+    - |
+      <script>
+        // 为所有锚点链接添加平滑滚动
+        document.addEventListener('DOMContentLoaded', function() {
+          document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+              const href = this.getAttribute('href');
+              if (href !== '#') {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                  target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                  });
+                }
+              }
+            });
+          });
+        });
+      </script>
+
+    # 3. 访问统计 - 不蒜子（轻量无依赖）
+    - <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    # 4. 控制台欢迎信息（专业且友好）
+    - |
+      <script>
+        // 简洁专业的控制台欢迎信息
+        if (typeof console !== 'undefined') {
+          const style = 'background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 8px 12px; border-radius: 4px; font-weight: bold;';
+          console.log('%c👋 欢迎访问！', style);
+          console.log('%c这是一个基于 Hexo + Butterfly 构建的技术博客', 'color: #667eea;');
+        }
+      </script>
+
+    # 5. 外部链接安全优化
+    - |
+      <script>
+        // 为外部链接添加安全属性和图标提示
+        document.addEventListener('DOMContentLoaded', function() {
+          const links = document.querySelectorAll('a[href^="http"]');
+          links.forEach(link => {
+            const href = link.getAttribute('href');
+            const isExternal = !href.includes(window.location.hostname);
+            if (isExternal) {
+              link.setAttribute('target', '_blank');
+              link.setAttribute('rel', 'noopener noreferrer');
+            }
+          });
+        });
+      </script>
 # CDN Settings
 # Don't modify the following settings unless you know how they work
 CDN:
