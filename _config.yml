@@ -4,7 +4,7 @@
 
 # Site
 title: 这是一个计科小蒟蒻的博客
-subtitle: '欢迎来到我的博客'
+subtitle: ''
 description: '分享一些想法和见识'
 keywords:
 author: luomochuhiqiu
@@ -102,9 +102,3 @@ theme: butterfly
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: ''
-# 搜索功能配置
-search:
-  path: search.xml
-  field: post
-  content: true
-  format: html

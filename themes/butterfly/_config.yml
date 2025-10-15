@@ -22,7 +22,6 @@ menu:
   归档: /archives/ || fas fa-archive
   标签: /tags/ || fas fa-tags
   分类: /categories/ || fas fa-folder-open
-  搜索: search || fas fa-search
 
 # --------------------------------------
 # Code Blocks Settings
@@ -488,7 +487,7 @@ math:
 search:
   # Choose: algolia_search / local_search / docsearch
   # leave it empty if you don't need search
-  use:
+  use: local_search
   placeholder:
 
   # Algolia Search
@@ -498,7 +497,6 @@ search:
 
   # Local Search
   local_search:
-    enable: true
     # Preload the search data when the page loads.
     preload: false
     # Show top n results per article, show all results by setting to -1
@@ -548,7 +546,7 @@ comments:
   # Leave it empty if you don't need comments
   # Choose: Disqus/Disqusjs/Livere/Gitalk/Valine/Waline/Utterances/Facebook Comments/Twikoo/Giscus/Remark42/Artalk
   # Format of two comments system : Disqus,Waline
-  use:
+  use: 
   # Display the comment name next to the button
   text: true
   # Lazyload: The comment system will be load when comment element enters the browser's viewport.
@@ -1157,73 +1155,6 @@ inject:
         }
       </style>
   bottom:
-    # 1. 性能优化 - 图片懒加载增强
-    - |
-      <script>
-        // 增强图片懒加载，提升页面加载性能
-        if ('loading' in HTMLImageElement.prototype) {
-          const images = document.querySelectorAll('img:not([loading])');
-          images.forEach(img => {
-            if (!img.getAttribute('loading')) {
-              img.setAttribute('loading', 'lazy');
-            }
-          });
-        }
-      </script>
-
-    # 2. 用户体验 - 平滑滚动增强
-    - |
-      <script>
-        // 为所有锚点链接添加平滑滚动
-        document.addEventListener('DOMContentLoaded', function() {
-          document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-              const href = this.getAttribute('href');
-              if (href !== '#') {
-                e.preventDefault();
-                const target = document.querySelector(href);
-                if (target) {
-                  target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                  });
-                }
-              }
-            });
-          });
-        });
-      </script>
-
-    # 3. 访问统计 - 不蒜子（轻量无依赖）
-    - <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-    # 4. 控制台欢迎信息（专业且友好）
-    - |
-      <script>
-        // 简洁专业的控制台欢迎信息
-        if (typeof console !== 'undefined') {
-          const style = 'background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 8px 12px; border-radius: 4px; font-weight: bold;';
-          console.log('%c👋 欢迎访问！', style);
-          console.log('%c这是一个基于 Hexo + Butterfly 构建的技术博客', 'color: #667eea;');
-        }
-      </script>
-
-    # 5. 外部链接安全优化
-    - |
-      <script>
-        // 为外部链接添加安全属性和图标提示
-        document.addEventListener('DOMContentLoaded', function() {
-          const links = document.querySelectorAll('a[href^="http"]');
-          links.forEach(link => {
-            const href = link.getAttribute('href');
-            const isExternal = !href.includes(window.location.hostname);
-            if (isExternal) {
-              link.setAttribute('target', '_blank');
-              link.setAttribute('rel', 'noopener noreferrer');
-            }
-          });
-        });
-      </script>
 # CDN Settings
 # Don't modify the following settings unless you know how they work
 CDN:
