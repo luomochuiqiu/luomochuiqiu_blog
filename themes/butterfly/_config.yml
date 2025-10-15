@@ -66,7 +66,7 @@ disable_top_img: false
 default_top_img:
 
 # The banner image of index page
-index_img:
+index_img: false 
 
 # The banner image of archive page
 archive_img:
@@ -1069,8 +1069,8 @@ inject:
   head:
     - |
       <style>
+        /* 统一彩色渐变背景 - 适用于所有页面 */
         body {
-          /* 经典彩虹渐变 */
           background: linear-gradient(45deg, 
             #ff9a9e, #fad0c4, #fad0c4, 
             #a18cd1, #fbc2eb, #a6c1ee,
@@ -1078,86 +1078,49 @@ inject:
           background-size: 400% 400%;
           animation: gradientBG 15s ease infinite;
           background-attachment: fixed;
+          min-height: 100vh;
         }
         
+        /* 首页横幅区域透明，显示背景渐变 */
+        #page-header {
+          background: transparent !important;
+          padding: 120px 0 80px !important;
+        }
+        
+        /* 确保标题和副标题在渐变背景上清晰可见 */
+        #page-header .page-header h1 {
+          color: #2c3e50 !important;
+          font-size: 2.5rem !important;
+          text-shadow: 0 2px 10px rgba(255, 255, 255, 0.8) !important;
+          margin-bottom: 1rem !important;
+        }
+        
+        #page-header .page-header .subtitle {
+          color: #34495e !important;
+          font-size: 1.2rem !important;
+          text-shadow: 0 1px 6px rgba(255, 255, 255, 0.7) !important;
+          opacity: 0.9 !important;
+        }
+        
+        /* 内容区域样式 */
+        .layout {
+          background: rgba(255, 255, 255, 0.92) !important;
+          backdrop-filter: blur(10px) !important;
+          border-radius: 15px !important;
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+          margin: 20px auto !important;
+          max-width: 1200px !important;
+          min-height: 400px;
+        }
+        
+        /* 动画定义 */
         @keyframes gradientBG {
           0% { background-position: 0% 50%; }
           50% { background-position: 100% 50%; }
           100% { background-position: 0% 50%; }
         }
-        
-        /* 确保内容区域可读 */
-        .layout {
-          background: rgba(255, 255, 255, 0.85);
-          backdrop-filter: blur(5px);
-        }
       </style>
   bottom:
-    # 1. 性能优化 - 图片懒加载增强
-    - |
-      <script>
-        // 增强图片懒加载，提升页面加载性能
-        if ('loading' in HTMLImageElement.prototype) {
-          const images = document.querySelectorAll('img:not([loading])');
-          images.forEach(img => {
-            if (!img.getAttribute('loading')) {
-              img.setAttribute('loading', 'lazy');
-            }
-          });
-        }
-      </script>
-    # 2. 用户体验 - 平滑滚动增强
-    - |
-      <script>
-        // 为所有锚点链接添加平滑滚动
-        document.addEventListener('DOMContentLoaded', function() {
-          document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-              const href = this.getAttribute('href');
-              if (href !== '#') {
-                e.preventDefault();
-                const target = document.querySelector(href);
-                if (target) {
-                  target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                  });
-                }
-              }
-            });
-          });
-        });
-      </script>
-    # 3. 访问统计 - 不蒜子（轻量无依赖）
-    - <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-    # 4. 控制台欢迎信息（专业且友好）
-    - |
-      <script>
-        // 简洁专业的控制台欢迎信息
-        if (typeof console !== 'undefined') {
-          const style = 'background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 8px 12px; border-radius: 4px; font-weight: bold;';
-          console.log('%c👋 欢迎访问！', style);
-          console.log('%c这是一个基于 Hexo + Butterfly 构建的技术博客', 'color: #667eea;');
-        }
-      </script>
-
-    # 5. 外部链接安全优化
-    - |
-      <script>
-        // 为外部链接添加安全属性和图标提示
-        document.addEventListener('DOMContentLoaded', function() {
-          const links = document.querySelectorAll('a[href^="http"]');
-          links.forEach(link => {
-            const href = link.getAttribute('href');
-            const isExternal = !href.includes(window.location.hostname);
-            if (isExternal) {
-              link.setAttribute('target', '_blank');
-              link.setAttribute('rel', 'noopener noreferrer');
-            }
-          });
-        });
-      </script>
 # CDN Settings
 # Don't modify the following settings unless you know how they work
 CDN:
