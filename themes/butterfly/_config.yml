@@ -66,7 +66,7 @@ disable_top_img: false
 default_top_img:
 
 # The banner image of index page
-index_img: /img/guillermo-ferla-Oze6U2m1oYU-unsplash.jpg
+index_img:
 
 # The banner image of archive page
 archive_img:
@@ -1093,40 +1093,67 @@ inject:
         }
       </style>
   bottom:
-    # 1. 网站统计分析（三选一即可）
-    - |
-      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    # 2. 访问量统计与显示
-    - |
-      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    # 3. 控制台趣味输出（轻量有趣）
+    # 1. 性能优化 - 图片懒加载增强
     - |
       <script>
-        console.log(`%c欢迎访问我的博客！ 🚀`, 'color: #667eea; font-size: 16px; font-weight: bold;');
-        console.log(`%c主题：Butterfly | 框架：Hexo`, 'color: #764ba2; font-size: 12px;');
-      </script>
-    # 4. 图片懒加载增强（如果主题未内置）
-    - |
-      <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          const images = document.querySelectorAll('img');
+        // 增强图片懒加载，提升页面加载性能
+        if ('loading' in HTMLImageElement.prototype) {
+          const images = document.querySelectorAll('img:not([loading])');
           images.forEach(img => {
-            img.loading = 'lazy';
+            if (!img.getAttribute('loading')) {
+              img.setAttribute('loading', 'lazy');
+            }
+          });
+        }
+      </script>
+    # 2. 用户体验 - 平滑滚动增强
+    - |
+      <script>
+        // 为所有锚点链接添加平滑滚动
+        document.addEventListener('DOMContentLoaded', function() {
+          document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+              const href = this.getAttribute('href');
+              if (href !== '#') {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                  target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                  });
+                }
+              }
+            });
           });
         });
       </script>
-    # 5. 平滑滚动增强
+    # 3. 访问统计 - 不蒜子（轻量无依赖）
+    - <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    # 4. 控制台欢迎信息（专业且友好）
     - |
       <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-          anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-              target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-              });
+        // 简洁专业的控制台欢迎信息
+        if (typeof console !== 'undefined') {
+          const style = 'background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 8px 12px; border-radius: 4px; font-weight: bold;';
+          console.log('%c👋 欢迎访问！', style);
+          console.log('%c这是一个基于 Hexo + Butterfly 构建的技术博客', 'color: #667eea;');
+        }
+      </script>
+
+    # 5. 外部链接安全优化
+    - |
+      <script>
+        // 为外部链接添加安全属性和图标提示
+        document.addEventListener('DOMContentLoaded', function() {
+          const links = document.querySelectorAll('a[href^="http"]');
+          links.forEach(link => {
+            const href = link.getAttribute('href');
+            const isExternal = !href.includes(window.location.hostname);
+            if (isExternal) {
+              link.setAttribute('target', '_blank');
+              link.setAttribute('rel', 'noopener noreferrer');
             }
           });
         });
