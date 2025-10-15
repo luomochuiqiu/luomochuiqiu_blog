@@ -18,10 +18,10 @@ nav:
   fixed: false
 
 menu:
-  # Home: / || fas fa-home
-  # List||fas fa-list:
-  #   Music: /music/ || fas fa-music
-  #   Movie: /movies/ || fas fa-video
+  Home: / || fas fa-home
+  List||fas fa-list:
+    Music: /music/ || fas fa-music
+    Movie: /movies/ || fas fa-video
 
 # --------------------------------------
 # Code Blocks Settings
@@ -56,8 +56,8 @@ social:
 favicon: /img/favicon.png
 
 avatar:
-  img: /img/butterfly-icon.png
-  effect: false
+  img: /img/xianyu.jpg
+  effect: true
 
 # Disable all banner images
 disable_top_img: false
