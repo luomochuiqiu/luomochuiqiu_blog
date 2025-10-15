@@ -1071,10 +1071,70 @@ css_prefix: true
 # Insert the code to head (before '</head>' tag) and the bottom (before '</body>' tag)
 inject:
   head:
-    # - <link rel="stylesheet" href="/xxx.css">
+    - |
+      <style>
+        body {
+          /* 经典彩虹渐变 */
+          background: linear-gradient(45deg, 
+            #ff9a9e, #fad0c4, #fad0c4, 
+            #a18cd1, #fbc2eb, #a6c1ee,
+            #84fab0, #8fd3f4);
+          background-size: 400% 400%;
+          animation: gradientBG 15s ease infinite;
+          background-attachment: fixed;
+        }
+        
+        @keyframes gradientBG {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        
+        /* 确保内容区域可读 */
+        .layout {
+          background: rgba(255, 255, 255, 0.85);
+          backdrop-filter: blur(5px);
+        }
+      </style>
   bottom:
-    # - <script src="xxxx"></script>
-
+    # 1. 网站统计分析（三选一即可）
+    - |
+      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    # 2. 访问量统计与显示
+    - |
+      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    # 3. 控制台趣味输出（轻量有趣）
+    - |
+      <script>
+        console.log(`%c欢迎访问我的博客！ 🚀`, 'color: #667eea; font-size: 16px; font-weight: bold;');
+        console.log(`%c主题：Butterfly | 框架：Hexo`, 'color: #764ba2; font-size: 12px;');
+      </script>
+    # 4. 图片懒加载增强（如果主题未内置）
+    - |
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const images = document.querySelectorAll('img');
+          images.forEach(img => {
+            img.loading = 'lazy';
+          });
+        });
+      </script>
+    # 5. 平滑滚动增强
+    - |
+      <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+              target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }
+          });
+        });
+      </script>
 # CDN Settings
 # Don't modify the following settings unless you know how they work
 CDN:
