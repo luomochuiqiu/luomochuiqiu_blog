@@ -1,0 +1,33 @@
+/* 页脚渐变样式 */
+#footer {
+  background: linear-gradient(45deg, 
+    #ff9a9e, #fad0c4, #fad0c4, 
+    #a18cd1, #fbc2eb, #a6c1ee,
+    #84fab0, #8fd3f4) !important;
+  background-size: 400% 400% !important;
+  animation: gradientBG 15s ease infinite !important;
+  background-attachment: fixed !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
+  color: white !important;
+  padding: 30px 0 !important;
+  margin-top: 40px !important;
+  position: relative;
+}
+
+/* 页脚文字颜色调整 */
+#footer, 
+#footer a, 
+#footer .footer-item {
+  color: rgba(255, 255, 255, 0.9) !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+}
+
+#footer a:hover {
+  color: white !important;
+  text-decoration: underline !important;
+}
+
+/* 确保页脚内容与背景对比度足够 */
+#footer .footer-separator {
+  color: rgba(255, 255, 255, 0.7) !important;
+}

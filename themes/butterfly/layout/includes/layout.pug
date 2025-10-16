@@ -35,3 +35,17 @@ html(lang=config.language data-theme=theme.display_mode class=htmlClassHideAside
 
     include ./rightside.pug
     include ./additional-js.pug
+
+//- 动态线条背景 - 使用与原始版本相同的参数（自己修改的地方以下都是）
+script(
+  type="text/javascript",
+  color="220,220,220",
+  pacity="0.7",
+  Index="-2",
+  ount="200",
+  src=url_for("/js/canvas-nest.js")
+) 
+//- pace.js 加载进度条（新增这个）
+link(rel="stylesheet", href=url_for("/css/pace-custom.css"))
+script(src=url_for("/js/pace.min.js"))
+script(src=url_for("/js/pace-config.js"))

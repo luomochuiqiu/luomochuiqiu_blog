@@ -1,0 +1,93 @@
+/* 自定义 pace.js 进度条样式 - 胶囊样式 */
+#custom-pace {
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+#custom-pace.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.custom-pace-progress {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  background: transparent;
+}
+
+.custom-pace-progress-inner {
+  height: 100%;
+  width: 0%;
+  border-radius: 10px;
+  background: linear-gradient(90deg, 
+    #ff6b6b, 
+    #ffa726, 
+    #66bb6a, 
+    #42a5f5, 
+    #ab47bc
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 2s ease infinite;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 15px rgba(255, 107, 107, 0.4);
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+#custom-pace.complete .custom-pace-progress-inner {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* 简约线条样式备用方案 */
+/*
+#custom-pace {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+#custom-pace.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.custom-pace-progress {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+.custom-pace-progress-inner {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1);
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+}
+*/

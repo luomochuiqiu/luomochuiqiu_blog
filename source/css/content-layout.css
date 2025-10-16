@@ -1,0 +1,10 @@
+/* 内容区域样式 */
+.layout {
+  background: rgba(255, 255, 255, 0.92) !important;
+  backdrop-filter: blur(10px) !important;
+  border-radius: 15px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+  margin: 20px auto !important;
+  max-width: 1200px !important;
+  min-height: 400px;
+}
