@@ -70,6 +70,10 @@ index_generator:
 # Category & Tag
 default_category: uncategorized
 category_map:
+  C++学习: cpp-learning
+  CS50记录: cs50-notes  
+  环境配置: env-setup
+  周总结: weekly-summary
 tag_map:
 
 # Metadata elements

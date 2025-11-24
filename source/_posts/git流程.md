@@ -3,7 +3,7 @@ title: git流程
 tags:
   - 博客流
   - 技术流
-categories: 思考
+categories:
 cover:
 description: 关于git流程
 mood: 🎨
