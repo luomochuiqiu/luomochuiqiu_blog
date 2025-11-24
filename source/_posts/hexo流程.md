@@ -1,6 +1,16 @@
 ---
-title: {{ title }}
-date: {{ date }}
+title: hexo流程
+tags:
+  - 博客流
+  - 技术流
+categories: 
+cover:
+description: 关于hexo流程
+mood: 🎨
+weather: ☀️
+location: 🏠
+date: 2025-11-24 20:43:17
+updated: 2025-11-24 20:43:17
 ---
 
 # Hexo 日常使用指令完全指南
@@ -298,9 +308,3 @@ hexo clean && hexo g && hexo d
 ```
 
 ---
-
-> 记住：日常写作只需掌握前几个核心指令组合即可满足大部分需求。Happy Blogging! 🎉
-
-**标签**: `Hexo`, `博客管理`, `命令行`, `工作流`, `静态站点`
-
-**分类**: `技术指南 / 博客建设`

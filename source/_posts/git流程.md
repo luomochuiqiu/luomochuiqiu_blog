@@ -1,8 +1,17 @@
 ---
-title: {{ title }}
-date: {{ date }}
+title: git流程
+tags:
+  - 博客流
+  - 技术流
+categories: 思考
+cover:
+description: 关于git流程
+mood: 🎨
+weather: ☀️
+location: 🏠
+date: 2025-11-24 20:44:51
+updated: 2025-11-24 20:44:51
 ---
-
 # Git 操作流程图与完整指南
 
 > 本文详细介绍了 Git 的完整工作流程，从基础操作到高级技巧，包含丰富的流程图和实用命令。
@@ -435,9 +444,3 @@ git config --global alias.st status
 | **标签** | `git tag v1.0.0` | 创建版本标签 |
 
 ---
-
-> 本文涵盖了 Git 的完整工作流程，从基础操作到高级技巧。建议收藏本文，在需要时快速查阅相关命令。
-
-**标签**: `Git`, `版本控制`, `工作流`, `分支管理`, `开发工具`
-
-**分类**: `技术指南 / 开发工具`
