@@ -1,5 +1,5 @@
 ---
-title: c++的输出限制
+title: C++ 使用 cout 控制小数点输出位数（fixed + setprecision）
 categories:
   - C++学习
 tags:
@@ -7,84 +7,18 @@ tags:
 date: 2025-12-09 20:37:04
 ---
 
-# {{ title }}
+在 C++ 刷题或写程序时，经常需要控制浮点数输出的小数位数（比如保留 2 位或 6 位小数）。使用 `cout` 配合 `<iomanip>` 头文件中的 `std::fixed` 和 `std::setprecision` 即可轻松实现。
 
-## 🎯 学习目标
+## 基本用法
 
-### 本章重点
-- [ ] 概念1
-- [ ] 概念2  
-- [ ] 概念3
-
-### 实践要求
-- [ ] 完成代码示例
-- [ ] 解决练习题
-- [ ] 项目应用
-
-## 📚 核心概念
-
-### 关键知识点
 ```cpp
-// 代码示例位置
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
-详细说明
-概念定义
-
-定义说明
-
-使用场景
-
-语法规则
-
-语法格式
-
-注意事项
-
-🔧 代码实践
-基础示例
-cpp
-// 基础代码模板
-#include <iostream>
-using namespace std;
-
-💡 常见问题
-Q: 问题描述？
-A: 解决方案
-
-Q: 问题描述？
-A: 解决方案
-
-📝 练习题目
-基础练习
-题目1: 描述
-
-要求: xxx
-
-提示: xxx
-
-题目2: 描述
-
-要求: xxx
-
-提示: xxx
-
-挑战练习
-项目: 描述
-
-目标: xxx
-
-📖 学习资源
-推荐阅读
-资源链接1
-
-资源链接2
-
-参考文档
-C++ Reference
-
-cppreference.com
-
-下一篇预告: 下一章内容
-学习心得: 记录本章学习体会
+int main() {
+    double x = 3.1415926;
+    cout << fixed << setprecision(2) << x << endl;  // 输出: 3.14
+    return 0;
+}
+```
